@@ -15,7 +15,7 @@
 #define DEFAULT_STATE 50
 #define LOGIN_STATE 151
 #define SIGNIN_STATE 253
-#define ANIMATION_LENGHT .25
+#define ANIMATION_LENGHT .30
 
 #define MAIN_BUTTON_TITLE_DEFAULT_STATE @"Log In"
 #define MAIN_BUTTON_TITLE_LOGIN_STATE @"✓"
@@ -86,8 +86,8 @@
         [self.view layoutIfNeeded];
     }];
     [backButton setHidden:YES];
-    [loginContainer setHidden:YES];
-    [signinContainer setHidden:YES];
+    [loginContainer setAlpha:0];
+    [signinContainer setAlpha:0];
     [mainButton setBackgroundColor:MAIN_BUTTON_DEFAULT_COLOR];
     [secondaryButton setBackgroundColor:SECONDARY_BUTTON_DEFAULT_COLOR];
     [mainButton setTitle:MAIN_BUTTON_TITLE_DEFAULT_STATE forState:UIControlStateNormal];
@@ -98,11 +98,10 @@
 -(void)loginState {
     [alphaContainerHeightConstraint setConstant:LOGIN_STATE];
     [UIView animateWithDuration:ANIMATION_LENGHT animations:^{
-        
+        [self popupContainer:loginContainer];
         [self.view layoutIfNeeded];
     }];
     [backButton setHidden:NO];
-    [loginContainer setHidden:NO];
     [mainButton setTitle:MAIN_BUTTON_TITLE_LOGIN_STATE forState:UIControlStateNormal];
     [secondaryButton setTitle:SECONDARY_BUTTON_TITLE_LOGIN_STATE forState:UIControlStateNormal];
     
@@ -111,16 +110,28 @@
 -(void)signupState {
     [alphaContainerHeightConstraint setConstant:SIGNIN_STATE];
     [UIView animateWithDuration:ANIMATION_LENGHT animations:^{
-        
         [self.view layoutIfNeeded];
+        [UIView animateWithDuration:ANIMATION_LENGHT animations:^{
+            [self popupContainer:signinContainer];
+        }];
     }];
     [backButton setHidden:NO];
-    [signinContainer setHidden:NO];
     [mainButton setBackgroundColor:MAIN_BUTTON_SIGNIN_COLOR];
     [secondaryButton setBackgroundColor:SECONDARY_BUTTON_SIGNIN_COLOR];
     [mainButton setTitle:MAIN_BUTTON_TITLE_SIGNIN_STATE forState:UIControlStateNormal];
     [secondaryButton setTitle:SECONDARY_BUTTON_TITLE_SIGNIN_STATE forState:UIControlStateNormal];
     
+}
+
+-(void)popupContainer:(UIView *)container {
+    [UIView animateWithDuration:2.f
+                          delay:0.f
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         [container setAlpha:1.f];
+                     }
+                     completion:nil];
+
 }
 
 - (IBAction)backButtonTapped:(id)sender {

@@ -33,7 +33,7 @@
                                                     <constraint firstAttribute="height" constant="50" id="M13-E6-TMz"/>
                                                 </constraints>
                                             </view>
-                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-Ss-ded" userLabel="Login Container">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-Ss-ded" userLabel="Login Container">
                                                 <rect key="frame" x="0.0" y="518" width="320" height="101"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fuc-sA-HMf">
@@ -354,12 +354,12 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="cJp-lf-kRQ"/>
+                                                <exclude reference="p56-DY-Rzp"/>
+                                                <exclude reference="zUy-5S-Koa"/>
                                                 <exclude reference="CsZ-2l-lGV"/>
                                                 <exclude reference="Ffo-3o-5Hp"/>
                                                 <exclude reference="LDD-58-GJ6"/>
                                                 <exclude reference="Vf8-X7-ZWc"/>
-                                                <exclude reference="p56-DY-Rzp"/>
-                                                <exclude reference="zUy-5S-Koa"/>
                                             </mask>
                                         </variation>
                                     </view>
